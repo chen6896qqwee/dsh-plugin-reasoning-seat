@@ -1,0 +1,10 @@
+# Bundle patch for dsh-plugin-reasoning-seat.
+#
+# The host half of this package is an empty `apply()`; the row exists so the
+# Loader mounts the plugin and dsh-client-modules discovers its `dsh.client`
+# browser bundle (exports["./client"]). The browser half shadows the built-in
+# composer model seat at slot priority -100; the built-in plugin stays enabled
+# so its `modelDirectories` service and `/model` command keep working.
+- insert:
+    - id: ui-reasoning-seat
+      name: 'dsh-plugin-reasoning-seat'
